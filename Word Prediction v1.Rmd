@@ -1,0 +1,57 @@
+---
+title: "Word Prediction v1"
+author: "SP"
+date: "June 26, 2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introduction
+
+Have you ever wondered how nice it would be if you could have an app
+
+- where you entered a phrase and the **next** word automatically gets suggested?
+- where you just enter one word and the **next** word gets automatically predicted?
+
+If your answer to any of these questions is yes - then this app is for you!
+
+## What goes into making this app?
+
+- **DATA** which includes (3) text files containing randomized information from
+- blogs with **899288** lines of text containing **37334131** words!
+- news with **77259** lines of text containing **2643969** words!
+- twitter feeds with **2360148** lines of text containing **30373543** words!
+
+Preprocessing, which involves
+
+- using **tidytext** to clean data,i.e.remove stop words, extra spaces, random letters, etc.
+
+Breaking down each file into 
+
+- **bigrams** (groups of two words occuring successively) 
+- **trigrams** (groups of three words occuring successively) 
+
+## So how does it all work?
+
+- By first only filtering bigrams and trigrams that exceed a certain frequency of occurance
+- By sorting bigrams based on the first word
+- By sorting trigrams based on the first word and then the second word
+- Creating a new probability column which assigns a value for the likelihood for a word to occur, given the first word for bigrams
+- Creating a new probability column which assigns a value for the likelihood for a word to occur, given the first **and** second word for trigrams
+- In both of the above cases, the word with the highest probability would then be predicted
+
+## Conclusion and future work 
+
+- This app demostrates the free and simple version v1 of the word prediction app
+
+We plan on adding new features for v2 that include:
+
+- Showing values for actual number of occurances for the predicted word
+- Increasing the database by including words from other sources, news articles, journals, etc.
+- Sentiment analysis
+
+The author would like to credit: https://web.stanford.edu/~jurafsky/slp3/3.pdf for ideas on how to implement the ngram models discussed in the presentation
+
